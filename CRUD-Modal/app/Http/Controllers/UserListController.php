@@ -8,6 +8,11 @@ use App\User;
 
 class UserListController extends Controller
 {
+    public function user_list()
+    {
+        $users = User::all();
+        return view('CRUD.user_list')->with('users',$users);
+    }
     public function index($id)
     {
         $user = User::find($id);
