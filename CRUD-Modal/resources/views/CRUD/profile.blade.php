@@ -17,7 +17,7 @@
       <div class="e-navlist e-navlist--active-bg">
         <ul class="nav">
           <li class="nav-item"><a class="nav-link px-2 active" href="profile.html"><i class="fa fa-fw fa-bar-chart mr-1"></i><span>Profile</span></a></li>
-          <li class="nav-item"><a class="nav-link px-2" href="user_list.html"><i class="fa fa-fw fa-th mr-1"></i><span>User CRUD</span></a></li>
+          <li class="nav-item"><a class="nav-link px-2" href=""><i class="fa fa-fw fa-th mr-1"></i><span>User CRUD</span></a></li>
         </ul>
       </div>
     </div>
@@ -60,20 +60,21 @@
               </ul>
               <div class="tab-content pt-3">
                 <div class="tab-pane active">
-                  <form class="form" novalidate="">
+                  <form class="form" action="{{ route('ProfileUpdate',$user->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="row">
                       <div class="col">
                         <div class="row">
                           <div class="col">
                             <div class="form-group">
                               <label>Full Name</label>
-                              <input class="form-control" type="text" name="name" placeholder="John Smith" value="John Smith">
+                              <input class="form-control" type="text" name="full_name" placeholder="John Smith" value="{{ $user->full_name }}">
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-group">
                               <label>Username</label>
-                              <input class="form-control" type="text" name="username" placeholder="johnny.s" value="johnny.s">
+                              <input class="form-control" type="text" name="username" placeholder="johnny.s" value="{{ $user->username }}">
                             </div>
                           </div>
                         </div>
@@ -81,7 +82,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Email</label>
-                              <input class="form-control" type="text" placeholder="user@example.com">
+                              <input class="form-control" type="text" placeholder="user@example.com" name="email" value="{{ $user->email }}">
                             </div>
                           </div>
                         </div>
@@ -89,7 +90,7 @@
                           <div class="col mb-3">
                             <div class="form-group">
                               <label>About</label>
-                              <textarea class="form-control" rows="5" placeholder="My Bio"></textarea>
+                              <textarea class="form-control" name="about" rows="5" placeholder="My Bio">{{ $user->about }}</textarea>
                             </div>
                           </div>
                         </div>
@@ -102,7 +103,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Current Password</label>
-                              <input class="form-control" type="password" placeholder="••••••">
+                              <input class="form-control" name="current_password" type="password" placeholder="••••••" >
                             </div>
                           </div>
                         </div>
@@ -110,7 +111,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label>New Password</label>
-                              <input class="form-control" type="password" placeholder="••••••">
+                              <input class="form-control" name="new_password"  type="password" placeholder="••••••">
                             </div>
                           </div>
                         </div>
@@ -118,7 +119,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                              <input class="form-control" type="password" placeholder="••••••"></div>
+                              <input class="form-control" name="confirm_password"  type="password" placeholder="••••••"></div>
                           </div>
                         </div>
                       </div>
@@ -141,10 +142,13 @@
         <div class="card mb-3">
           <div class="card-body">
             <div class="px-xl-3">
-              <button class="btn btn-block btn-secondary">
+              <a class="btn btn-block btn-secondary" href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="fa fa-sign-out"></i>
                 <span>Logout</span>
-              </button>
+              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none" >
+                                        @csrf
+                                    </form>
             </div>
           </div>
         </div>
