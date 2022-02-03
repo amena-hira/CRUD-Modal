@@ -33,19 +33,29 @@
                 <div class="col-12 col-sm-auto mb-3">
                   <div class="mx-auto" style="width: 140px;">
                     <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                      <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
+                    @if(Auth::user()->image)
+
+                    <img class="class_image" src="{{ asset('storage/'.$user->image )}}" height="100px" width="100px" alt="Class Image">
+                    @else
+                      <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140 </span>
+                    @endif
+
                     </div>
                   </div>
                 </div>
                 <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                  
                   <div class="text-center text-sm-left mb-2 mb-sm-0">
                     <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">John Smith</h4>
                     <p class="mb-0">@johnny.s</p>
                     <div class="text-muted"><small>Last seen 2 hours ago</small></div>
                     <div class="mt-2">
+                    <form action="{{ route('ProfileUpdate',$user->id) }}" method="POST" enctype="multipart/form-data">
                       <button class="btn btn-primary" type="button">
                         <i class="fa fa-fw fa-camera"></i>
-                        <span><input type="file" name="picture"></span>
+                        <span>
+                        @csrf
+                        <input type="file" name="image"></span>
                       </button>
                     </div>
                   </div>
@@ -61,7 +71,7 @@
               <div class="tab-content pt-3">
                 <div class="tab-pane active">
                   <form class="form" action="{{ route('ProfileUpdate',$user->id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                    
                     <div class="row">
                       <div class="col">
                         <div class="row">

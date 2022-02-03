@@ -48,6 +48,12 @@ class UserListController extends Controller
         else{
             $user->password = $user->password;
         }
+        if($request->hasfile('image')){
+            $image = $request->file('image');
+            $img = $image->getClientOriginalName();
+            $image->move('storage',$img);
+            $user->image = $img;
+        }
         
         $user->save();
         $user = User::find($id);
