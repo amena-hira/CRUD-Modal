@@ -53,4 +53,10 @@ class UserListController extends Controller
         $user = User::find($id);
         return view('CRUD.profile')->with('user',$user);
     }
+    public function delete( $id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return back();
+    }
 }

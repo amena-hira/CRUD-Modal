@@ -79,7 +79,7 @@
                               <button class="btn btn-sm btn-outline-secondary badge" type="button" data-toggle="modal" data-target="#edit_modal{{$user->id}}" >Edit</button>
                               @include('CRUD.edit')
                               
-                              <button class="btn btn-sm btn-outline-secondary badge" type="button" ><i class="fa fa-trash"></i></button>
+                              <a class="btn btn-sm btn-outline-secondary badge" type="button" href="{{ route('UserDelete',$user->id) }}"><i class="fa fa-trash"></i></a>
                           </div>
                         </td>
                       </tr>
