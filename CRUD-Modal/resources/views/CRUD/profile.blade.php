@@ -33,12 +33,10 @@
                 <div class="col-12 col-sm-auto mb-3">
                   <div class="mx-auto" style="width: 140px;">
                     <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                    @if(Auth::user()->image)
+                    
 
-                    <img class="class_image" src="{{ asset('storage/'.$user->image )}}" height="100px" width="100px" alt="Class Image">
-                    @else
-                      <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140 </span>
-                    @endif
+                    <img class="class_image" src="{{ asset('storage/'.$user->image )}}" height="100px" width="100px" alt="140x140">
+                    
 
                     </div>
                   </div>
