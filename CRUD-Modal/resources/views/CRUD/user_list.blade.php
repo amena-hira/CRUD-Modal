@@ -108,7 +108,7 @@
         <div class="card">
           <div class="card-body">
             <div class="text-center px-xl-3">
-              <button class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#user-form-modal">New User</button>
+              <button class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#create-form-modal">New User</button>
             </div>
             <hr class="my-3">
             <div class="e-navlist e-navlist--active-bold">
@@ -161,6 +161,7 @@
         </div>
       </div>
     </div>
+    @include('CRUD.create')
 
     <!-- User Form Modal -->
     <div class="modal fade" role="dialog" tabindex="-1" id="user-form-modal">

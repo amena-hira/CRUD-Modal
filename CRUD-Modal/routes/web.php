@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/profile/{id}', 'UserListController@index')->name('profile');
 Route::get('/user_list', 'UserListController@user_list')->name('UserList');
 
+Route::post('/create', 'UserListController@create')->name('UserCreate');
 Route::post('/profile_update/{id}', 'UserListController@profile_update')->name('ProfileUpdate');
 
 Auth::routes();

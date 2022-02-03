@@ -19,6 +19,19 @@ class UserListController extends Controller
         return view('CRUD.profile')->with('user',$user);
     }
 
+    public function create(Request $request)
+    {
+        $user = new User();
+        $user->full_name = $request->full_name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->about = $request->about;
+        $user->password = $request->password;
+        
+        $user->save();
+        return back();
+    }
+
     public function profile_update(Request $request,$id)
     {
         $user = User::find($id);
